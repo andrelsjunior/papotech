@@ -2,7 +2,7 @@ CREATE OR REPLACE PROCEDURE
   camada_raw.criar_staging()
 BEGIN
 INSERT INTO
-  `gglobo-coe-govdados-dev-qa.dataform.staging`
+  `projeto.dataset.staging`
 WITH
   dedup AS (
   SELECT
@@ -20,7 +20,7 @@ WITH
     data_transacao,
     ROW_NUMBER() OVER (PARTITION BY id_pedido ORDER BY data_transacao ASC) AS rn
   FROM
-    `gglobo-coe-govdados-dev-qa.dataform.teste` )
+    `projeto.dataset.teste` )
 SELECT
   * EXCEPT(rn)
 FROM

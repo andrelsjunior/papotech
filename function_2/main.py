@@ -47,4 +47,4 @@ def ingestao_csv(event, context):
     print("Existem agora {} linhas na tabela {}" \
         .format(tabela.num_rows, id_tabela))
 
-    cliente.query()
+    cliente.query("CALL dataset.criar_staging()").result()

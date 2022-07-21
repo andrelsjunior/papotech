@@ -1,0 +1,7 @@
+CREATE OR REPLACE TABLE `projeto.dataset.clientes` AS
+SELECT MD5(cpf) as id, nome, sobrenome, cpf, data_nascimento, estado, email, telefone
+FROM `projeto.dataset.staging`;
+
+CREATE OR REPLACE TABLE `projeto.dataset.fato` AS
+SELECT MD5(cpf) as id_user, id_pedido, status_pedido, vendedor, produto, data_transacao
+FROM `projeto.dataset.staging`;

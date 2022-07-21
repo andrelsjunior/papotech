@@ -1,7 +1,7 @@
 from google.cloud import bigquery
 import os
 
-def ingestao_csv(event:dict, context:google.cloud.functions.Context):
+def ingestao_csv(event, context):
     """Cloud function que é engatilhada por novo arquivo no bucket GCS
        Essa função carrega os dados do arquivo que acabaram de chegar no
        bucket GCS para uma tabela específica do BigQuery
@@ -9,7 +9,7 @@ def ingestao_csv(event:dict, context:google.cloud.functions.Context):
 
     cliente = bigquery.Client()
 
-    id_tabela = os.getenv('TABLE_PATH')
+    id_tabela = os.getenv('CAMINHO_TABELA')
 
     job_config = bigquery.LoadJobConfig(
         schema=[
@@ -46,3 +46,5 @@ def ingestao_csv(event:dict, context:google.cloud.functions.Context):
     
     print("Existem agora {} linhas na tabela {}" \
         .format(tabela.num_rows, id_tabela))
+
+    cliente.query()

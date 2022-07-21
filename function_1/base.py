@@ -4,7 +4,7 @@ from envia_arquivo_bucket import envia_arquivo_bucket
 import random
 import os
 
-nome_bucket = os.get_env('NOME_BUCKET')
+nome_bucket = os.getenv('NOME_BUCKET')
 
 fake = Faker('pt_BR')
 
@@ -19,13 +19,13 @@ nomes_campos = [
     'produto', 'date_time_this_month'
     ]
 
-#List comprehension para gerar o jinja com o nome da coluna
+#List comprehension para gerar o jinja com o nome da coluna.
 colunas_dados = [f'{{{{{item}}}}}' for item in nomes_campos]
 
 dados = fake.csv(
     data_columns=colunas_dados,
     header=nomes_campos,
-    num_rows=random.randint(1,250),
+    num_rows=random.randint(2000,6000),
     include_row_ids=False
 )
 

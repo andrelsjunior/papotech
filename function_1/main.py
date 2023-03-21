@@ -4,6 +4,9 @@ import random
 import os
 
 def insere_arquivo_bucket(context, event):
+    """
+    Insere arquivo contendo dados fake no bucket escolhido
+    """
     nome_bucket = os.getenv('NOME_BUCKET')
 
     dados = criar_dados_csv()
